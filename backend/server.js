@@ -15,6 +15,21 @@ const jobRoutes = require("./routes/jobRoutes");
 dotenv.config();
 connectDB();
 
+// TEMPORARY: Promote admin account (Delete this after use)
+const User = require("./models/User");
+const promoteAdmin = async () => {
+    try {
+        await User.findOneAndUpdate(
+            { email: "admin@college.com" },
+            { role: "admin", status: "approved" }
+        );
+        console.log("Admin promotion successful!");
+    } catch (err) {
+        console.error("Promotion failed:", err.message);
+    }
+};
+promoteAdmin();
+
 const app = express();
 
 app.use(cors());
