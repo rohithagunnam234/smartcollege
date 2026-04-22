@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = 'https://smartcollege-8o8c.onrender.com/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://smartcollege-api-48wd.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE,
